@@ -1,3 +1,3 @@
 # restapi
 Screenshots:
-![Screenshots](.screenshots/png)
+![Screenshots](screens.png)
