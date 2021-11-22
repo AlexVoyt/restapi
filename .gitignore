@@ -1,4 +1,5 @@
 *.swp
+reqs.http
 *.un~
 .env
 ###> symfony/framework-bundle ###
