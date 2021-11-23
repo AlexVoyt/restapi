@@ -25,7 +25,7 @@ class FileController extends AbstractController
         $login = $req->headers->get("REST-Login");
         $password = $req->headers->get("REST-Password");
 
-        // TODO: this relies on knowledge of how we determine password, should incapsulate this
+
         $user = $user_rep->getUser($login, $password);
 
         if($user)
@@ -98,5 +98,42 @@ class FileController extends AbstractController
         }
     }
 
+    #[Route('/', name: '.get_list', methods: ["GET"])] 
+    public function getListOfFiles(Request $req, UserRepository $user_rep, 
+                                   FileRepository $file_rep): Response
+    {
+        $login = $req->headers->get("REST-Login");
+        $password = $req->headers->get("REST-Password");
+
+
+        $user = $user_rep->getUser($login, $password);
+        if($user)
+        {
+            $files = $file_rep->findBy([
+                "owner" => $user->getId()
+            ]);
+
+            $result = [];
+            //TODO: size?
+            foreach ($files as $file) {
+                $array = [
+                    "filename" => $file->getOriginalName()
+                ];
     
+                $result[] = $array;
+            }
+
+            return $this->json([
+                'status' => 200,
+                'files' => $result,
+            ]);
+        }
+        else
+        {
+            return $this->json([
+                'status' => 400,
+                'message' => "User not found"
+            ]);
+        }
+    }
 }

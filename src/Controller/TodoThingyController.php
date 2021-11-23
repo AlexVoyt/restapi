@@ -57,6 +57,7 @@ class TodoThingyController extends AbstractController
                 "user" => $user
             ]);
 
+            $result = [];
             //$todos_json = json_encode($todos);
             // NOTE: absolutely SHAMELESSLY(!), DISGUSTINGLY(!!!) taken from ykropchik repo (i hate php and i dont understand what json_encode do)
             // NOTE: also i hate bash like honestly wtf is this jesus
