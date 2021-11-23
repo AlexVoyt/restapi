@@ -8,6 +8,7 @@ use App\Repository\UserRepository;
 use App\Service\FileUploader;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -127,6 +128,43 @@ class FileController extends AbstractController
                 'status' => 200,
                 'files' => $result,
             ]);
+        }
+        else
+        {
+            return $this->json([
+                'status' => 400,
+                'message' => "User not found"
+            ]);
+        }
+    }
+
+    #[Route('/{originalName}', name: '.download', methods: ["GET"])] 
+    public function downloadFile(Request $req, UserRepository $user_rep, 
+                                 FileRepository $file_rep, $originalName): Response
+    {
+        $login = $req->headers->get("REST-Login");
+        $password = $req->headers->get("REST-Password");
+
+        $user = $user_rep->getUser($login, $password);
+        if($user)
+        {
+            $file = $file_rep->findOneBy([
+                "owner" => $user->getId(),
+                "originalName" => $originalName
+            ]);
+
+            if($file)
+            {
+                $result_file = $this->getParameter('uploads_dir') . '/' . $file->getSafeName();
+                return new BinaryFileResponse($result_file);
+            }
+            else
+            {
+                return $this->json([
+                    'status' => 400,
+                    'message' => "File not found"
+                ]);
+            }
         }
         else
         {
