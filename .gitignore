@@ -3,6 +3,7 @@ reqs.http
 *.un~
 .env
 file_test
+public/uploads
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

@@ -19,6 +19,14 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function getUser($login, $password)
+    {
+        return $this->findOneBy([
+            "login" => $login,
+            "password" => hash("sha256", $password)
+        ]);
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
