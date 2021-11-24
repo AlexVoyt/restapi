@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class FileUploader 
+class FileUploader
 {
     private $targetDirectory;
     private $slugger;
@@ -27,7 +27,7 @@ class FileUploader
         try {
             $file->move($this->getTargetDirectory(), $fileName);
         } catch (FileException $e) {
-            throw new Exception('[ERROR] Could not move file ' . $fileName . ' (safe filename: ' . $safeFilename . ') to directory ' . $this->getTargetDirectory());
+            throw new Exception('[ERROR] Could not move file '.$fileName.' (safe filename: '.$safeFilename.') to directory '.$this->getTargetDirectory());
         }
 
         return $fileName;

@@ -28,7 +28,7 @@ class File
      */
     private $safeName;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $originalName;
@@ -46,18 +46,6 @@ class File
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
 
         return $this;
     }

@@ -21,10 +21,12 @@ class UserRepository extends ServiceEntityRepository
 
     public function getUser($login, $password)
     {
-        return $this->findOneBy([
-            "login" => $login,
-            "password" => hash("sha256", $password)
-        ]);
+        return $this->findOneBy(
+            [
+            'login' => $login,
+            'password' => hash('sha256', $password),
+            ]
+        );
     }
 
     // /**
