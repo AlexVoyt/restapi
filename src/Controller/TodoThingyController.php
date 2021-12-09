@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\TodoThingy;
 use App\Repository\TodoThingyRepository;
 use App\Repository\UserRepository;
-use function App\utils\EnsureUserCredentials;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +36,7 @@ class TodoThingyController extends AbstractController
             );
         }
 
-        $user_credentials_provided = EnsureUserCredentials($data);
+        $user_credentials_provided = isset($data['login']) && isset($data['password']);
         if (!$user_credentials_provided) {
             return $this->json(
                 [
@@ -113,7 +112,7 @@ class TodoThingyController extends AbstractController
             );
         }
 
-        $user_credentials_provided = EnsureUserCredentials($data);
+        $user_credentials_provided = isset($data['login']) && isset($data['password']);
         if (!$user_credentials_provided) {
             return $this->json(
                 [
@@ -193,7 +192,7 @@ class TodoThingyController extends AbstractController
             );
         }
 
-        $user_credentials_provided = EnsureUserCredentials($data);
+        $user_credentials_provided = isset($data['login']) && isset($data['password']);
         if (!$user_credentials_provided) {
             return $this->json(
                 [
@@ -278,7 +277,7 @@ class TodoThingyController extends AbstractController
             );
         }
 
-        $user_credentials_provided = EnsureUserCredentials($data);
+        $user_credentials_provided = isset($data['login']) && isset($data['password']);
         if (!$user_credentials_provided) {
             return $this->json(
                 [

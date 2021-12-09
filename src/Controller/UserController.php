@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use function App\utils\EnsureUserCredentials;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,7 +44,7 @@ class UserController extends AbstractController
             );
         }
 
-        $user_credentials_provided = EnsureUserCredentials($data);
+        $user_credentials_provided = isset($data['login']) && isset($data['password']);
         if (!$user_credentials_provided) {
             return $this->json(
                 [
