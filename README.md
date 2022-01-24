@@ -60,8 +60,8 @@
 
 </details>
 
-<details><summary>Dev/Prod</summary>
+<details><summary>ssh+git DnD</summary>
 
-![ssh+git Dnd](./screenshots/deploy_dev.png)
+![ssh+git DnD](./screenshots/deploy_dev.png)
 
 </details>
