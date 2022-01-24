@@ -7,7 +7,7 @@
 
 <details><summary>File service</summary>
 
-![Files](./screenshots/file_tests.png)
+![Files](./screenshots/files.png)
 
 </details>
 
