@@ -59,3 +59,9 @@
 ![Dev/Prod](./screenshots/dev_prod.png)
 
 </details>
+
+<details><summary>Dev/Prod</summary>
+
+![ssh+git Dnd](./screenshots/deploy_dev.png)
+
+</details>
