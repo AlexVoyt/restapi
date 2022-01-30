@@ -15,6 +15,7 @@ jobs:
         with:
           envkey_APP_ENV: "dev"
           envkey_APP_SECRET: "nonsecretsecret"
+          envkey_DATABASE_URL: "mysql://db_user:db_pass@127.0.0.1:3306/db_name?serverVersion=5.7"
           filename: .env
 
       - name: Install dependencies
