@@ -20,6 +20,6 @@ class UserTest extends TestCase
     public function invalidSyntheticTest()
     {
         $user = new User();
-        $this->assertEquals("validTest", $user->synteticTest("invalidTest"));
+        $this->assertEquals("invalidTest", $user->synteticTest("invalidTest"));
     }
 }
