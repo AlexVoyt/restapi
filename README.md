@@ -65,3 +65,9 @@
 ![ssh+git DnD](./screenshots/deploy_dev.png)
 
 </details>
+
+<details><summary>CI/CD</summary>
+
+![CI/CD](./screenshots/CI_CD.png)
+
+</details>
