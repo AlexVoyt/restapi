@@ -13,7 +13,7 @@ jobs:
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v1
         with:
-          envkey_APP_ENV: "dev"
+          envkey_APP_ENV: "prod"
           envkey_APP_SECRET: "nonsecretsecret"
           envkey_DATABASE_URL: "mysql://db_user:db_pass@127.0.0.1:3306/db_name?serverVersion=5.7"
           filename: .env
@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: composer install
 
-      - name: Run phpcbf
-        run: vendor/bin/phpcbf src
+      - name: Run phpmd
+        run: vendor/bin/phpmd src ansi codesize
 
       - name: Run tests
         run: vendor/bin/phpunit
