@@ -134,4 +134,9 @@ class User
 
         return $this;
     }
+
+    public function synteticTest($data)
+    {
+        return $data;
+    }
 }
